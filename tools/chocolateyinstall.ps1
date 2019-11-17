@@ -7,7 +7,7 @@ $LGPOUrl        = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4
 
 $SecBaseLinePackageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = "${env:ProgramFiles(x86)}\WinSecBaseline"
+  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName"
   url           = $SecBaseLineUrl
   checksum      = 'F51FC91A6E5CEEE9D965F2D12319DEFA25073101421D212F95F40A402DDA7740'
   checksumType  = 'sha256'
@@ -16,7 +16,7 @@ $SecBaseLinePackageArgs = @{
 
 $LGPOPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = "${env:ProgramFiles(x86)}\WinSecBaseline\Scripts\Tools"
+  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools"
   url           = $LGPOUrl
   checksum      = '6FFB6416366652993C992280E29FAEA3507B5B5AA661C33BA1AF31F48ACEA9C4'
   checksumType  = 'sha256'
@@ -38,7 +38,7 @@ else{
   $OSType = 'Server'
 } 
 
-$ScriptInstallerPath = "${env:ProgramFiles(x86)}\WinSecBaseline\Scripts\Baseline-LocalInstall.ps1"
+$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Baseline-LocalInstall.ps1"
 
 if ($OSType -eq 'Server'){
   & $ScriptInstallerPath -WSNonDomainJoined
