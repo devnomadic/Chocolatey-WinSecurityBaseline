@@ -8,7 +8,7 @@
     <title>winsecuritybaseline (Install)</title>
     <authors>Microsoft</authors>
     <projectUrl>https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/devnomadic/Chocolatey-Webswing/master/WebswingLogo.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/devnomadic/Chocolatey-WinSecurityBaseline/master/MS_SecurityIntelligence_Icon.png</iconUrl>
     <licenseUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/windows-security-configuration-framework</projectSourceUrl>
