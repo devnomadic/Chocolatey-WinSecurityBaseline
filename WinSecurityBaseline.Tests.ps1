@@ -10,6 +10,7 @@ if (!(choco --version))
 }
 
 $WorkingFiles = gci -Recurse
+$WorkingFiles
 $Nupkg = $WorkingFiles | ? {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
 
 
