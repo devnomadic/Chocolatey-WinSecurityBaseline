@@ -15,6 +15,9 @@ Write-Host $PackageName
 $Nupkg = $WorkingFiles | ? {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
 Write-Host $Nupkg
 
+$PkgInstall = choco install $Nupkg.FullName -y
+Write-Host $PkgInstall
+
 Describe 'Chocolatey Packages Install' {
     It "Install: $PackageName" {
         $PkgInstall = $null
@@ -22,8 +25,6 @@ Describe 'Chocolatey Packages Install' {
         $PkgInstall | ?{$_ -match "The install of $PackageName was successful"} | Should -Not -Be $null
     }
 }
-
-choco install $Nupkg.FullName -y
 
 Describe 'Chocolatey Package is listed' {
     It "Listed" {
