@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $false)]
-    [string]$PackageName = 'WinSecurityBaselines'
+    [string]$PackageName = 'WinSecurityBaseline'
 )
 
 if (!(choco --version))
