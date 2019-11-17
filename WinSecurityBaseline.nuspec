@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>winsecuritybaseline</id>
+    <id>WinSecurityBaseline</id>
     <version>19.03.01</version>
     <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
-    <title>winsecuritybaseline (Install)</title>
+    <title>WinSecurityBaseline (Install)</title>
     <authors>Microsoft</authors>
     <projectUrl>https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/devnomadic/Chocolatey-WinSecurityBaseline/master/MS_SecurityIntelligence_Icon.png</iconUrl>
@@ -55,7 +55,9 @@ For example, there are over 3,000 Group Policy settings for Windows 10, which do
 
 In modern organizations, the security threat landscape is constantly evolving, and IT pros and policy-makers must keep up with security threats and make required changes to Windows security settings to help mitigate these threats. To enable faster deployments and make managing Windows easier, Microsoft provides customers with security baselines that are available in consumable formats, such as Group Policy Objects backups.
     </description>
-    <dependency id="chocolatey-core.extension" version="1.1.0" />
+    <dependencies>
+      <dependency id="chocolatey-core.extension" version="1.1.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
