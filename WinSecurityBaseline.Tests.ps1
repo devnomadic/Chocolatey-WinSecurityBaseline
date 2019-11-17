@@ -11,8 +11,9 @@ if (!(choco --version))
 
 $WorkingFiles = gci -Recurse
 Write-Host $WorkingFiles
+Write-Host $PackageName
 $Nupkg = $WorkingFiles | ? {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
-
+Write-Host $Nupkg
 
 Describe 'Chocolatey Packages Install' {
     It "Install: $PackageName" {
@@ -21,6 +22,8 @@ Describe 'Chocolatey Packages Install' {
         $PkgInstall | ?{$_ -match "The install of $PackageName was successful"} | Should -Not -Be $null
     }
 }
+
+choco install $Nupkg.FullName -y
 
 Describe 'Chocolatey Package is listed' {
     It "Listed" {
