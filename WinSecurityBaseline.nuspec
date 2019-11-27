@@ -3,12 +3,12 @@
   <metadata>
     <id>WinSecurityBaseline</id>
     <version>19.03.01</version>
-    <packageSourceUrl>https://rawcdn.githack.com/devnomadic/Chocolatey-WinSecurityBaseline/6c9feb19bd88c5016b10b82947c97bfc4ab8f1de/MS_SecurityIntelligence_Icon.png</packageSourceUrl>
+    <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
     <title>WinSecurityBaseline (Install)</title>
     <authors>Microsoft</authors>
     <projectUrl>https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/devnomadic/Chocolatey-WinSecurityBaseline/master/MS_SecurityIntelligence_Icon.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/devnomadic/Chocolatey-WinSecurityBaseline/6c9feb19bd88c5016b10b82947c97bfc4ab8f1de/MS_SecurityIntelligence_Icon.png</iconUrl>
     <licenseUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/windows-security-configuration-framework</projectSourceUrl>
@@ -26,7 +26,7 @@
 #### Package Parameters
 The following package parameters can be set:
 
- * `/OSType:worstaton\server` - Default values is server 
+ * `/OSType:workstion\server` - Default values is server 
 
 #### Package Uninstallation
 
