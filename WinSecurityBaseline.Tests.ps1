@@ -19,6 +19,9 @@ Write-Host $Nupkg
 $NupkgOutput = choco install $Nupkg.FullName -y
 Write-Host $NupkgOutput
 
+$ChocoLogs = Get-Content -Path "$($env:programdata)\chocolatey\logs\chocolatey.log"
+Write-Host $ChocoLogs
+
 Describe 'Chocolatey Packages Install' {
     It "Install: $PackageName" {
         $PkgInstall = $null
