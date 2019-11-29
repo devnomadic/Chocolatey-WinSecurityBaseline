@@ -2,6 +2,12 @@
 $toolsDir  = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $arguments = Get-PackageParameters
 
+$OSVersion = [System.Environment]::OSVersion.Version
+
+if($OSVersion.Major -lt 10){
+  throw "Windows build must be Windows10+ or Server2016+"
+}
+
 $SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201903%20and%20Windows%20Server%20Version%201903%20Security%20Baseline%20-%20Sept2019Update.zip' # download url, HTTPS preferred
 $LGPOUrl        = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip'
 
