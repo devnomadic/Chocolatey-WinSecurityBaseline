@@ -15,6 +15,9 @@ Write-Host $PackageName
 $Nupkg = $WorkingFiles | Where-Object {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
 Write-Host $Nupkg
 
+#Debug Tesging
+choco install $Nupkg.FullName -y
+
 Describe 'Chocolatey Packages Install' {
     It "Install: $PackageName" {
         $PkgInstall = $null
