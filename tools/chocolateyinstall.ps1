@@ -36,8 +36,8 @@ Install-ChocolateyZipPackage @LGPOPackageArgs
 if ($arguments.ContainsKey("OSType")) {
   Write-Host "OSType Argument Found"
   $OSType = $arguments["OSType"]
-  if ($OSType -notmatch "Server|Worstation"){
-    Throw "Arguments must be either 'server' or 'workstaiton'"
+  if ($OSType -notmatch "Server|Workstation"){
+    Throw "Arguments must be either 'server' or 'workstation'"
   }
 }
 else{
