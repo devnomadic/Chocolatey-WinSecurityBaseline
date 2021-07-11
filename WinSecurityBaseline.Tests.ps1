@@ -3,24 +3,26 @@ param(
     [string]$PackageName = 'WinSecurityBaseline'
 )
 
-if (!(choco --version))
-{
-    Write-Host "Choco not installed - Installing..."
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+BeforeAll {
+    if (!(choco --version))
+    {
+        Write-Host "Choco not installed - Installing..."
+        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    }
+    Write-Host "Hey Hey hey"
+
+
+    $WorkingFiles = Get-ChildItem -Recurse
+    Write-Host $WorkingFiles
+    Write-Host $PackageName
+    $Nupkg = $WorkingFiles | Where-Object {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
+    Write-Host $Nupkg
+
+    $NupkgOutput = choco install $Nupkg.FullName -y
+    Write-Host $NupkgOutput
+    $ChocoLogs = Get-Content -Path "$($env:programdata)\chocolatey\logs\chocolatey.log"
+    Write-Host $ChocoLogs
 }
-
-$WorkingFiles = Get-ChildItem -Recurse
-Write-Host $WorkingFiles
-Write-Host $PackageName
-$Nupkg = $WorkingFiles | Where-Object {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
-Write-Host $Nupkg
-
-<#Debug Tesging
-$NupkgOutput = choco install $Nupkg.FullName -y
-Write-Host $NupkgOutput
-$ChocoLogs = Get-Content -Path "$($env:programdata)\chocolatey\logs\chocolatey.log"
-Write-Host $ChocoLogs
-#>
 
 Describe 'Chocolatey Packages Install' {
     It "Install: $PackageName" {

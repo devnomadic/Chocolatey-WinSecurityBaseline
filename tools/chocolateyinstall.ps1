@@ -24,7 +24,7 @@ $LGPOPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools"
   url           = $LGPOUrl
-  checksum      = '6FFB6416366652993C992280E29FAEA3507B5B5AA661C33BA1AF31F48ACEA9C4'
+  checksum      = 'CB7159D134A0A1E7B1ED2ADA9A3CE8CE8F4DE391D14403D55438AF824247CC55'
   checksumType  = 'sha256'
   silentArgs    = ''
 }
