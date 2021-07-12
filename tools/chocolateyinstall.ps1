@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = 'Stop'; # stop on all errors
+$ErrorActionPreference = 'Stop'; # stop on all errors
 $toolsDir  = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $arguments = Get-PackageParameters
 
@@ -31,6 +31,17 @@ $LGPOPackageArgs = @{
 
 Install-ChocolateyZipPackage @SecBaseLinePackageArgs
 Install-ChocolateyZipPackage @LGPOPackageArgs
+
+#If unzip does not place LPGO.exe in tools directory then move it
+if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools\LGPO.exe")){
+    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools\" -Filter '*LGPO.exe' -Recurse
+    if ($gci){
+        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools\$($gci.name)"
+    }
+    else{
+        throw "Unable to find LGPO.exe"
+    }
+}
 
 #Run Microsoft PS1 installer
 if ($arguments.ContainsKey("OSType")) {
