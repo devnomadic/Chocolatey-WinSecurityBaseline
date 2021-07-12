@@ -15,12 +15,11 @@ BeforeAll {
     $Nupkg = $WorkingFiles | Where-Object {($_.Extension -eq '.nupkg') -and ($_.Name -match "$PackageName")}
     Write-Host $Nupkg
 
-    <#Debug Tesging
+    #Debug Tesging
     $NupkgOutput = choco install $Nupkg.FullName -y
     Write-Host $NupkgOutput
     $ChocoLogs = Get-Content -Path "$($env:programdata)\chocolatey\logs\chocolatey.log"
     Write-Host $ChocoLogs
-    #>
 }
 
 Describe 'Chocolatey Packages Install' {
