@@ -22,8 +22,8 @@ jobs:
 
       - name: Output
         run: |
-          echo "$GITHUB_WORKSPACE"
-          echo "$GITHUB_REPOSITORY"
+          echo ${{ github.workspace }}
+          echo ${{ github.repository }}
 
       - name: Get Choco version
         run: |
@@ -41,15 +41,15 @@ jobs:
         shell: pwsh
 
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1
         if: always()
         with:
-          files: $GITHUB_WORKSPACE/**/*.xml
+          files: ${{ github.workspace }}/**/*.xml
 
       - uses: actions/upload-artifact@v2
         with:
           name: choco-package
-          path: $GITHUB_WORKSPACE/
+          path: ${{ github.workspace }}/
 
   # dev_deploy:
   #   needs: build
