@@ -20,11 +20,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Output
-        run: |
-          echo ${{ github.workspace }}
-          echo ${{ github.repository }}
-
       - name: Get Choco version
         run: |
           choco --version
@@ -36,7 +31,7 @@ jobs:
       - name: Run Pester Tests
         shell: pwsh
         run: |
-          .\WinSecurityBaselinePester.ps1
+          .\WinSecurityBaseline.Pester.ps1
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action/composite@v1
