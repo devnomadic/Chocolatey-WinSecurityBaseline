@@ -38,7 +38,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: choco-package
-          path: /
+          path: $GITHUB_WORKSPACE/
 
   dev_deploy:
     needs: build
