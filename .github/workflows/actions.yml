@@ -14,7 +14,7 @@ on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  Build:
     runs-on: windows-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -31,7 +31,7 @@ jobs:
       - name: Run Pester Tests
         shell: pwsh
         run: |
-          .\WinSecurityBaseline.Pester.ps1
+          .\WinSecurityBaseline.Pester.ps1 -OutputFormat "JUnitXml"
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action/composite@v1
@@ -43,12 +43,23 @@ jobs:
         with:
           name: choco-package
           path: ${{ github.workspace }}/
-      
+
+   Release:
+     needs: Build
+     runs-on: windows-latest
+     environment:
+       name: test
+     steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: choco-package
+          path: ${{ github.workspace }}
+          
       - name: Archive Release
         shell: pwsh
         run: |
           Compress-Archive -Path ${{ github.workspace }} -DestinationPath ${{ github.workspace }}\Release.zip
-      
+
       - name: Create Draft Release
         id: create_release
         uses: actions/create-release@v1
@@ -68,13 +79,3 @@ jobs:
           asset_path: ${{ github.workspace }}\Release.zip
           asset_name: Release.zip
           asset_content_type: application/zip
-
-  # dev_deploy:
-  #   needs: build
-  #   runs-on: windows-latest
-  #   environment:
-  #     name: test
-  #   steps:
-  #     - name: Run a multi-line script
-  #       run: |
-  #         choco --version
