@@ -60,14 +60,21 @@ jobs:
         run: |
           Compress-Archive -Path ${{ github.workspace }} -DestinationPath ${{ github.workspace }}\Release.zip
 
+      - name: Generate Tag
+        shell: pwsh
+        run: |
+          $branchName = "${{ github.ref }}" -replace 'refs/heads/', ''
+          echo $branchName
+          echo "CURRENT_BRANCH=${branchName}" >> $env:GITHUB_ENV
+
       - name: Create Draft Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: ${{ env.CURRENT_BRANCH }}
+          release_name: ${{ env.CURRENT_BRANCH }}
           draft: true
           prerelease: false
 
