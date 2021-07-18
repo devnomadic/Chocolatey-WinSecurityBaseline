@@ -35,6 +35,11 @@ jobs:
           Invoke-Pester
         shell: pwsh
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: choco-package
+          path: $GITHUB_WORKSPACE
+
   dev_deploy:
     needs: build
     runs-on: windows-latest
