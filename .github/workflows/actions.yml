@@ -44,12 +44,12 @@ jobs:
           name: choco-package
           path: ${{ github.workspace }}/
 
-   Release:
-     needs: Build
-     runs-on: windows-latest
-     environment:
-       name: test
-     steps:
+  Release:
+    needs: Build
+    runs-on: windows-latest
+    environment:
+      name: test
+    steps:
       - uses: actions/download-artifact@v2
         with:
           name: choco-package
