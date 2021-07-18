@@ -28,6 +28,12 @@ jobs:
         run: |
           choco pack -d
 
+      - name: Output
+        run: |
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_REPOSITORY
+        shell: pwsh
+
       - name: Run Pester tests
         run: |
           Set-PSRepository psgallery -InstallationPolicy trusted
@@ -35,17 +41,23 @@ jobs:
           Invoke-Pester
         shell: pwsh
 
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: $GITHUB_WORKSPACE/**/*.xml
+
       - uses: actions/upload-artifact@v2
         with:
           name: choco-package
           path: $GITHUB_WORKSPACE/
 
-  dev_deploy:
-    needs: build
-    runs-on: windows-latest
-    environment:
-      name: test
-    steps:
-      - name: Run a multi-line script
-        run: |
-          choco --version
+  # dev_deploy:
+  #   needs: build
+  #   runs-on: windows-latest
+  #   environment:
+  #     name: test
+  #   steps:
+  #     - name: Run a multi-line script
+  #       run: |
+  #         choco --version
