@@ -1,7 +1,7 @@
 
 name: CI
 
-# Controls when the workflow will run
+workflow_dispatch:  # manual trigger
 on: [push]
   # Triggers the workflow on push or pull request events but only for the master branch
   #push:
@@ -27,5 +27,14 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build;
+          choco --version
+
+   dev_deploy:
+    needs: build
+    runs-on: windows-latest
+    environment:
+      name: test
+    steps:
+    - name: Run a multi-line script
+        run: |
           choco --version
