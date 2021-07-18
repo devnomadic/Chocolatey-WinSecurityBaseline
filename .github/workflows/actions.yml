@@ -33,12 +33,10 @@ jobs:
         run: |
           choco pack -d
 
-      - name: Run Pester tests
-        run: |
-          Set-PSRepository psgallery -InstallationPolicy trusted
-          Install-Module -Name Pester -Confirm:$false -Force
-          Invoke-Pester
+      - name: Run Pester Tests
         shell: pwsh
+        run: |
+          .\WinSecurityBaselinePester.ps1
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action/composite@v1
