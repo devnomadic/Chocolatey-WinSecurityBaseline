@@ -22,9 +22,8 @@ jobs:
 
       - name: Output
         run: |
-          write-output $GITHUB_WORKSPACE
-          write-output $GITHUB_REPOSITORY
-        shell: pwsh
+          echo "$GITHUB_WORKSPACE"
+          echo "$GITHUB_REPOSITORY"
 
       - name: Get Choco version
         run: |
