@@ -1,7 +1,7 @@
 
 name: CI
 
-workflow_dispatch:  # manual trigger
+#workflow_dispatch:  # manual trigger
 on: [push]
   # Triggers the workflow on push or pull request events but only for the master branch
   #push:
