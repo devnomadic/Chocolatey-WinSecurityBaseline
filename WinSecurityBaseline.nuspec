@@ -5,7 +5,7 @@
     <version>19.03.01</version>
     <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
-    <title>WinSecurityBaseline (Install)</title>
+    <title>WinSecurityBaseline</title>
     <authors>Microsoft</authors>
     <projectUrl>https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10</projectUrl>
     <iconUrl>https://rawcdn.githack.com/devnomadic/Chocolatey-WinSecurityBaseline/6c9feb19bd88c5016b10b82947c97bfc4ab8f1de/MS_SecurityIntelligence_Icon.png</iconUrl>
