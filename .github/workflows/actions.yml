@@ -20,6 +20,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Output
+        run: |
+          write-output $GITHUB_WORKSPACE
+          write-output $GITHUB_REPOSITORY
+        shell: pwsh
+
       - name: Get Choco version
         run: |
           choco --version
@@ -27,12 +33,6 @@ jobs:
       - name: Choco Pack
         run: |
           choco pack -d
-
-      - name: Output
-        run: |
-          echo $GITHUB_WORKSPACE
-          echo $GITHUB_REPOSITORY
-        shell: pwsh
 
       - name: Run Pester tests
         run: |
