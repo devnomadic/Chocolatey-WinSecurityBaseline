@@ -35,6 +35,6 @@ jobs:
     environment:
       name: test
     steps:
-    - name: Run a multi-line script
+      - name: Run a multi-line script
         run: |
           choco --version
