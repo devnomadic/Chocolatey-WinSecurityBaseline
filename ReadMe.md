@@ -1,7 +1,7 @@
 ﻿## Build Status
-Master Branch-[![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
+Master Branch: [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
-Feature Branch-[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg?fix_updates)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
+Feature Branch: [![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg?fix_updates)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
 # Windows security baselines
 
@@ -50,7 +50,7 @@ For example, there are over 3,000 Group Policy settings for Windows 10, which do
 
 In modern organizations, the security threat landscape is constantly evolving, and IT pros and policy-makers must keep up with security threats and make required changes to Windows security settings to help mitigate these threats. To enable faster deployments and make managing Windows easier, Microsoft provides customers with security baselines that are available in consumable formats, such as Group Policy Objects backups.
 
-# Chocolatey Boiler Plate:
+# Chocolatey Boilerplate:
 
 ## Summary
 How do I create packages? See https://chocolatey.org/docs/create-packages
