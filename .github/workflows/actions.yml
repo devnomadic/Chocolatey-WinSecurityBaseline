@@ -82,7 +82,7 @@ jobs:
         with:
           release_id: ${{ steps.create_release.outputs.id }}
       
-      # - name: Choco Push
-      #   shell: pwsh
-      #   run: |
-      #     choco push --source https://chocolatey.org/ --api-key ${{ secrets.CHOCO_API_KEY }}
+      - name: Choco Push
+        shell: pwsh
+        run: |
+          choco push --source https://chocolatey.org/ --api-key ${{ secrets.CHOCO_API_KEY }}
