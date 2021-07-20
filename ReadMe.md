@@ -3,7 +3,7 @@
 
 # Windows security baselines
 
-[Chocolatey Package](https://chocolatey.org/packages/webswing)
+[Chocolatey Package](https://chocolatey.org/packages/winsecuritybaseline)
 
 ```
 C:\choco install winsecuritybaseline
