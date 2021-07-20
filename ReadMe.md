@@ -1,8 +1,16 @@
 ﻿## Build Status
+Master Branch-[![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
+Feature Branch-[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg?fix_updates)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
 # Windows security baselines
+
+[Chocolatey Package](https://chocolatey.org/packages/webswing)
+
+```
+C:\choco install winsecuritybaseline
+C:\choco upgrade winsecuritybaseline
+```
 
 **Applies to**
 -   Windows Server 2016+
