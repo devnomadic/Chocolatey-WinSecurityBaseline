@@ -3,8 +3,8 @@ param(
     [string]$PackageName = 'WinSecurityBaseline'
 )
 
-if (!(choco --version))
-{
+
+if (!(choco --version)) {
     Write-Host "Choco not installed - Installing..."
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
@@ -23,7 +23,7 @@ Write-Host $ChocoLogs
 #>
 
 Describe 'Chocolatey Packages Install' {
-    It "Install: $PackageName" {
+    It "Install: $PackageName" -TestCases @{PackageName = $PackageName; Nupkg = $Nupkg}  {
         $PkgInstall = $null
         $PkgInstall = choco install $Nupkg.FullName -y
         $PkgInstall | Where-Object {$_ -match "The install of $PackageName was successful"} | Should -Not -Be $null
@@ -31,7 +31,7 @@ Describe 'Chocolatey Packages Install' {
 }
 
 Describe 'Chocolatey Package is listed' {
-    It "Listed" {
+    It "Listed" -TestCases @{PackageName = $PackageName} {
         $PkgList = $null
         $PkgList = choco list --local-only
         $PkgList | Where-Object {$_ -match $PackageName} | Should -Not -Be $null
@@ -39,7 +39,7 @@ Describe 'Chocolatey Package is listed' {
 }
 
 Describe 'Chocolatey Package Contents exist' {
-    It "$PackageName" {
+    It "$PackageName" -TestCases @{PackageName = $PackageName} {
         $PkgContents = $null
         $PkgContents = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$PackageName" -Recurse
         $PkgContents | Should -Not -Be $null
@@ -47,7 +47,7 @@ Describe 'Chocolatey Package Contents exist' {
 }
 
 Describe 'Chocolatey Package Uninstall' {
-    It "Uninstall: $PackageName" {
+    It "Uninstall: $PackageName" -TestCases @{PackageName = $PackageName} {
         $PkgUninstall = $null
         $PkgUninstall = choco uninstall $PackageName -y
         $PkgUninstall | Where-Object {$_ -match "$PackageName has been successfully uninstalled"} | Should -Not -Be $null

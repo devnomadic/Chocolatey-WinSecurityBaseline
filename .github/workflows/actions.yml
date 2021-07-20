@@ -1,0 +1,88 @@
+
+name: CI
+
+on: [push]
+
+jobs:
+  Build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Choco version
+        run: |
+          choco --version
+      
+      - name: Choco Pack
+        run: |
+          choco pack -d
+
+      - name: Run Pester Tests
+        shell: pwsh
+        run: |
+          .\WinSecurityBaseline.Pester.ps1 -OutputFormat "JUnitXml"
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        if: always()
+        with:
+          files: ${{ github.workspace }}/**/*.xml
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: choco-package
+          path: ${{ github.workspace }}/
+
+  Release:
+    needs: Build
+    runs-on: windows-latest
+    environment:
+      name: Release
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: choco-package
+          path: ${{ github.workspace }}
+          
+      - name: Archive Release
+        shell: pwsh
+        run: |
+          Compress-Archive -Path ${{ github.workspace }} -DestinationPath ${{ github.workspace }}\Release.zip
+
+      - name: Generate Tag
+        shell: pwsh
+        run: |
+          $branchName = "${{ github.ref }}" -replace 'refs/heads/', ''
+          echo $branchName
+          echo "CURRENT_BRANCH=${branchName}" >> $env:GITHUB_ENV
+
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.CURRENT_BRANCH }}
+          release_name: ${{ env.CURRENT_BRANCH }}
+          draft: true
+          prerelease: false
+
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ github.workspace }}\Release.zip
+          asset_name: Release.zip
+          asset_content_type: application/zip
+      
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+      
+      - name: Choco Push
+        shell: pwsh
+        run: |
+          choco push --source https://chocolatey.org/ --api-key ${{ secrets.CHOCO_API_KEY }}
