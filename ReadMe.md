@@ -1,8 +1,6 @@
 ﻿## Build Status
 
-[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline)
-
-[![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
+[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
 # Windows security baselines
 
