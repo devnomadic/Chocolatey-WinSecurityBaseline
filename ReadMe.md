@@ -1,7 +1,7 @@
 ﻿## Build Status
 Master Branch: [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
-Feature Branch: [![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg?fix_updates)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
+Feature Branch: [![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg?v19.03.02)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
 
 # Windows security baselines
 
