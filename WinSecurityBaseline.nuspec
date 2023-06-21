@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>WinSecurityBaseline</id>
-    <version>19.03.02</version>
+    <version>18.09</version>
     <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
     <title>WinSecurityBaseline</title>
@@ -13,20 +13,20 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/windows-security-configuration-framework</projectSourceUrl>
     <docsUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/windows-security-configuration-framework/windows-security-baselines.md</docsUrl>
-    <tags>Windows Security Baseline 1903</tags>
+    <tags>Windows Security Baseline 1809</tags>
     <summary>A security baseline is a group of Microsoft-recommended configuration settings that explains their security impact. These settings are based on feedback from Microsoft security engineering teams, product groups, partners, and customers.</summary>
     <description>
 # Windows security baselines
 
 **Applies to**
 -   Windows Server 2016+
--   Windows 10
+-   Windows 10+
 
 ### Package Specific
 #### Package Parameters
 The following package parameters can be set:
 
- * `/OSType:workstation\server` - Default values is server 
+ * `/OSType:workstation\server` - Default value is server 
 
 #### Package Uninstallation
 
