@@ -1,5 +1,5 @@
 param(
-    [Parameter(Mandatory = $false)]
+    [Parameter(Mandatory = $true)]
     [string]$PackageName = 'WinSecurityBaseline'
 )
 
@@ -25,7 +25,7 @@ Write-Host $ChocoLogs
 Describe 'Chocolatey Packages Install' {
     It "Install: $PackageName" -TestCases @{PackageName = $PackageName; Nupkg = $Nupkg}  {
         $PkgInstall = $null
-        $PkgInstall = choco install $Nupkg.FullName -y
+        $PkgInstall = choco install $PackageName --version="18.9.0" --source="$PSScriptRoot"
         $PkgInstall | Where-Object {$_ -match "The install of $PackageName was successful"} | Should -Not -Be $null
     }
 }

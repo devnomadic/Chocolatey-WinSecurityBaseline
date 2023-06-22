@@ -22,7 +22,7 @@ $SecBaseLinePackageArgs = @{
 
 $LGPOPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools"
+  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools"
   url           = $LGPOUrl
   checksum      = 'CB7159D134A0A1E7B1ED2ADA9A3CE8CE8F4DE391D14403D55438AF824247CC55'
   checksumType  = 'sha256'
@@ -33,10 +33,10 @@ Install-ChocolateyZipPackage @SecBaseLinePackageArgs
 Install-ChocolateyZipPackage @LGPOPackageArgs
 
 #If unzip does not place LPGO.exe in tools directory then move it
-if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools\LGPO.exe")){
-    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools\" -Filter '*LGPO.exe' -Recurse
+if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\LGPO.exe")){
+    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\" -Filter '*LGPO.exe' -Recurse
     if ($gci){
-        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Scripts\Tools\$($gci.name)"
+        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\$($gci.name)"
     }
     else{
         throw "Unable to find LGPO.exe"
@@ -55,10 +55,10 @@ else{
   $OSType = 'Server'
 } 
 
-$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Baseline-LocalInstall.ps1"
+$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\BaselineLocalInstall.ps1"
 
 if ($OSType -eq 'Server'){
-  & $ScriptInstallerPath -WSNonDomainJoined
+  & $ScriptInstallerPath -WS2019NonDomainJoined
 }
 elseif ($OSType -eq 'Workstation'){
   & $ScriptInstallerPath -Win10NonDomainJoined
