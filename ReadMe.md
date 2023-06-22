@@ -18,11 +18,15 @@ C:\choco upgrade winsecuritybaseline
 #### Package Parameters
 The following package parameters can be set:
 
- * `/OSType:workstation\server` - Default values is server 
+ * `/OSType:workstation\server` - Default value is server 
 
 #### Package Uninstallation
 
  * Package LGPO settings cannot be uninsalled programticall once installed. This need to be done manually!
+
+#### Package Versions
+|Windows Version|Choco Package Version|
+|Windows Server 2019 LTSC - 1803|18.9.0|
 
 ## Using security baselines in your organization 
 

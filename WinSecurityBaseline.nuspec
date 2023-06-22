@@ -32,6 +32,10 @@ The following package parameters can be set:
 
  * Package LGPO settings cannot be uninsalled programticall once installed. This need to be done manually!
 
+#### Package Versions
+|Windows Version|Choco Package Version|
+|Windows Server 2019 LTSC - 1803|18.9.0|
+
 ## Using security baselines in your organization 
 
 Microsoft is dedicated to providing its customers with secure operating systems, such as Windows 10 and Windows Server, and secure apps, such as Microsoft Edge. In addition to the security assurance of its products, Microsoft also enables you to have fine control over your environments by providing various configuration capabilities. 
