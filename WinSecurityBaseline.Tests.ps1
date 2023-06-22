@@ -33,7 +33,7 @@ Describe 'Chocolatey Packages Install' {
 Describe 'Chocolatey Package is listed' {
     It "Listed" -TestCases @{PackageName = $PackageName} {
         $PkgList = $null
-        $PkgList = choco list --local-only
+        $PkgList = choco list
         $PkgList | Where-Object {$_ -match $PackageName} | Should -Not -Be $null
     }
 }
