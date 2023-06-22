@@ -8,7 +8,9 @@ Install-Module -Name Pester -MinimumVersion 5.2.2 -Confirm:$false -Force
 
 $outputFile = "$PSScriptRoot\Pester-Tests.xml"
 
-$pesterConfigurationContainer = New-PesterContainer -Path "WinSecurityBaseline.Tests.ps1" -Data @{PackageName = 'WinSecurityBaseline'}
+$nuspec= [xml](Get-Content "$PSScriptRoot\WinSecurityBaseline.nuspec")
+
+$pesterConfigurationContainer = New-PesterContainer -Path "WinSecurityBaseline.Tests.ps1" -Data @{PackageName = 'WinSecurityBaseline'; PackageVersion = $nuspec.package.metadata.version}
 
 $pesterConfiguration = [PesterConfiguration]::Default
 $pesterConfiguration.Run.Container = $pesterConfigurationContainer

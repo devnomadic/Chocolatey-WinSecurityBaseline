@@ -1,12 +1,18 @@
 param(
     [Parameter(Mandatory = $true)]
-    [string]$PackageName = 'WinSecurityBaseline'
+    [string]$PackageName,
+    [Parameter(Mandatory = $true)]
+    [string]$PackageVersion
 )
 
 
-if (!(choco --version)) {
+$Choco = choco --version
+if (!$Choco) {
     Write-Host "Choco not installed - Installing..."
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+elseif ($Choco -lt '2.0.0') {
+    choco upgrade chocolatey
 }
 
 $WorkingFiles = Get-ChildItem -Recurse
@@ -23,10 +29,10 @@ Write-Host $ChocoLogs
 #>
 
 Describe 'Chocolatey Packages Install' {
-    It "Install: $PackageName" -TestCases @{PackageName = $PackageName; Nupkg = $Nupkg}  {
+    It "Install: $PackageName" -TestCases @{PackageName = $PackageName; PackageVersion = $PackageVersion; Nupkg = $Nupkg}  {
         $PkgInstall = $null
-        $PkgInstall = choco install $PackageName --version="18.9.0" --source="$PSScriptRoot"
-        Write-Host $PkgInstall 
+        $PkgInstall = choco install $PackageName --version="$PackageVersion" --source="$PSScriptRoot"
+        Write-Host $PkgInstall
         Write-Host $PSScriptRoo
         $PkgInstall | Where-Object {$_ -match "The install of $PackageName was successful"} | Should -Not -Be $null
     }
