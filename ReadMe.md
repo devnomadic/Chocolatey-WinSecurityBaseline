@@ -26,6 +26,7 @@ The following package parameters can be set:
 
 #### Package Versions
 |Windows Version|Choco Package Version|
+|---|---|
 |Windows Server 2019 LTSC - 1803|18.9.0|
 
 ## Using security baselines in your organization 
