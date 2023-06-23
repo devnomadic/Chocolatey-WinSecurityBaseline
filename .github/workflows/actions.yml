@@ -2,8 +2,12 @@
 name: CI
 
 on:
+  pull_request:
+    branches:
+      - 'main'  
   push:
     branches:
+      - 'main'
       - 'releases/**'
       - 'bugs/**'
 
@@ -39,6 +43,7 @@ jobs:
 
   Release:
     needs: Build
+    if: contains(github.repository , 'releases')
     runs-on: windows-latest
     environment:
       name: Release
