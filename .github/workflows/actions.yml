@@ -43,7 +43,7 @@ jobs:
 
   Release:
     needs: Build
-    if: contains(github.repository , 'releases')
+    if: contains(github.ref , 'releases') && github.event_name != 'pull_request'
     runs-on: windows-latest
     environment:
       name: Release
