@@ -61,7 +61,7 @@ jobs:
       - name: Generate Tag
         shell: pwsh
         run: |
-          $branchName = "${{ github.ref }}" -replace 'refs/heads/', ''
+          $branchName = "${{ github.ref }}" -replace 'refs/heads/releases/', ''
           echo $branchName
           echo "CURRENT_BRANCH=${branchName}" >> $env:GITHUB_ENV
 
