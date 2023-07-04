@@ -1,7 +1,15 @@
 
 name: CI
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - 'master'  
+  push:
+    branches:
+      - 'master'
+      - 'releases/**'
+      - 'bugs/**'
 
 jobs:
   Build:
@@ -35,6 +43,7 @@ jobs:
 
   Release:
     needs: Build
+    if: contains(github.ref , 'releases') && github.event_name != 'pull_request'
     runs-on: windows-latest
     environment:
       name: Release
@@ -52,7 +61,7 @@ jobs:
       - name: Generate Tag
         shell: pwsh
         run: |
-          $branchName = "${{ github.ref }}" -replace 'refs/heads/', ''
+          $branchName = "${{ github.ref }}" -replace 'refs/heads/releases/', ''
           echo $branchName
           echo "CURRENT_BRANCH=${branchName}" >> $env:GITHUB_ENV
 
