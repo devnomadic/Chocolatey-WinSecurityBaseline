@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>WinSecurityBaseline</id>
-    <version>18.9.0</version>
+    <version>20.1803</version>
     <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
     <title>WinSecurityBaseline</title>
@@ -34,8 +34,8 @@ The following package parameters can be set:
 
 #### Package Versions
 |Windows Version|Choco Package Version|
-|Windows Server 2019 LTSC - 1803|18.9.0|
-|Windows 10 LTSC - 1803|18.9.0|
+|Windows Server 2019 LTSC - 1803|20.1803|
+|Windows 10 LTSC - 1803|20.1803|
 
 ## Using security baselines in your organization 
 
