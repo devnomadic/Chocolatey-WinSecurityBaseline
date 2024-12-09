@@ -1,7 +1,15 @@
 
 name: CI
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - 'master'  
+  push:
+    branches:
+      - 'master'
+      - 'releases/**'
+      - 'bugs/**'
 
 jobs:
   Build:
@@ -28,18 +36,19 @@ jobs:
         with:
           files: ${{ github.workspace }}/**/*.xml
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: choco-package
           path: ${{ github.workspace }}/
-
+          
   Release:
     needs: Build
+    if: contains(github.ref , 'releases') && github.event_name != 'pull_request'
     runs-on: windows-latest
     environment:
       name: Release
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: choco-package
           path: ${{ github.workspace }}
@@ -52,7 +61,7 @@ jobs:
       - name: Generate Tag
         shell: pwsh
         run: |
-          $branchName = "${{ github.ref }}" -replace 'refs/heads/', ''
+          $branchName = "${{ github.ref }}" -replace 'refs/heads/releases/', ''
           echo $branchName
           echo "CURRENT_BRANCH=${branchName}" >> $env:GITHUB_ENV
 

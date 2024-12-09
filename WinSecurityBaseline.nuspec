@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>WinSecurityBaseline</id>
-    <version>19.03.02</version>
+    <version>20.1803</version>
     <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
     <title>WinSecurityBaseline</title>
@@ -11,26 +11,32 @@
     <iconUrl>https://rawcdn.githack.com/devnomadic/Chocolatey-WinSecurityBaseline/6c9feb19bd88c5016b10b82947c97bfc4ab8f1de/MS_SecurityIntelligence_Icon.png</iconUrl>
     <licenseUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/windows-security-configuration-framework</projectSourceUrl>
-    <docsUrl>https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/windows-security-configuration-framework/windows-security-baselines.md</docsUrl>
-    <tags>Windows Security Baseline 1903</tags>
+    <projectSourceUrl>https://www.microsoft.com/en-us/download/details.aspx?id=55319</projectSourceUrl>
+    <docsUrl>https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines</docsUrl>
+    <releaseNotes>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline/pull/7</releaseNotes>
+    <tags>Windows Security Baseline 1809</tags>
     <summary>A security baseline is a group of Microsoft-recommended configuration settings that explains their security impact. These settings are based on feedback from Microsoft security engineering teams, product groups, partners, and customers.</summary>
     <description>
 # Windows security baselines
 
 **Applies to**
 -   Windows Server 2016+
--   Windows 10
+-   Windows 10+
 
 ### Package Specific
 #### Package Parameters
 The following package parameters can be set:
 
- * `/OSType:workstation\server` - Default values is server 
+ * `/OSType:workstation\server` - Default value is server 
 
 #### Package Uninstallation
 
  * Package LGPO settings cannot be uninsalled programticall once installed. This need to be done manually!
+
+#### Package Versions
+|Windows Version|Choco Package Version|
+|Windows Server 2019 LTSC - 1803|20.1803|
+|Windows 10 LTSC - 1803|20.1803|
 
 ## Using security baselines in your organization 
 
