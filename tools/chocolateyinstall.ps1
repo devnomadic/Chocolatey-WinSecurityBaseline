@@ -4,8 +4,9 @@ $arguments = Get-PackageParameters
 
 $OSVersion = [System.Environment]::OSVersion.Version
 
-if($OSVersion.Major -lt 10){
-  throw "Windows build must be Windows10+ or Server2016+"
+# Windows Server 2022 build is 20348, Windows 11 build is 22000+
+if($OSVersion.Major -lt 10 -or $OSVersion.Build -lt 20348){
+  throw "Windows build must be Windows 11+ or Windows Server 2022+"
 }
 
 $SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%20Server%202022%20Security%20Baseline.zip' # download url, HTTPS preferred
