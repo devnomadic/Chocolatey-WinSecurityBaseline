@@ -8,14 +8,14 @@ if($OSVersion.Major -lt 10){
   throw "Windows build must be Windows10+ or Server2016+"
 }
 
-$SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201809%20and%20Windows%20Server%202019%20Security%20Baseline.zip' # download url, HTTPS preferred
+$SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%20Server%202022%20Security%20Baseline.zip' # download url, HTTPS preferred
 $LGPOUrl        = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip'
 
 $SecBaseLinePackageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName"
   url           = $SecBaseLineUrl
-  checksum      = '575DDAF39EF364EA6DA678E22B0A988EA316EB240F73FBF618092A02647245BC'
+  checksum      = '3BDFB976546BE0EE4CE8B220A56E5A26C3ACBBB844DA00B6F9B2DD26D9CA0A04'
   checksumType  = 'sha256'
   silentArgs    = ''
 }
@@ -24,7 +24,7 @@ $LGPOPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools"
   url           = $LGPOUrl
-  checksum      = 'CB7159D134A0A1E7B1ED2ADA9A3CE8CE8F4DE391D14403D55438AF824247CC55'
+  checksum      = '6FFB6416366652993C992280E29FAEA3507B5B5AA661C33BA1AF31F48ACEA9C4'
   checksumType  = 'sha256'
   silentArgs    = ''
 }
@@ -58,10 +58,10 @@ else{
 $ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\BaselineLocalInstall.ps1"
 
 if ($OSType -eq 'Server'){
-  & $ScriptInstallerPath -WS2019NonDomainJoined
+  & $ScriptInstallerPath -WS2022NonDomainJoined
 }
 elseif ($OSType -eq 'Workstation'){
-  & $ScriptInstallerPath -Win10NonDomainJoined
+  & $ScriptInstallerPath -Win11NonDomainJoined
 }
 else {
   Throw "Error selection powershell arguments"

@@ -11,8 +11,8 @@ C:\choco upgrade winsecuritybaseline
 ```
 
 **Applies to**
--   Windows Server 2016+
--   Windows 10
+-   Windows Server 2022+
+-   Windows 11+
 
 ### Package Specific
 #### Package Parameters
@@ -27,6 +27,8 @@ The following package parameters can be set:
 #### Package Versions
 |Windows Version|Choco Package Version|
 |---|---|
+|Windows Server 2022|22.0.0|
+|Windows 11|22.0.0|
 |Windows Server 2019 LTSC - 1803|20.1803|
 |Windows 10 LTSC - 1803|20.1803|
 
