@@ -4,7 +4,8 @@ $arguments = Get-PackageParameters
 
 $OSVersion = [System.Environment]::OSVersion.Version
 
-# Windows Server 2022 build is 20348, Windows 11 build is 22000+
+# Windows Server 2022 has build 20348, Windows 11 has build 22000+
+# This check excludes Windows 10 (builds < 20348) and Windows Server 2019 (build 17763)
 if($OSVersion.Major -lt 10 -or $OSVersion.Build -lt 20348){
   throw "Windows build must be Windows 11+ or Windows Server 2022+"
 }
