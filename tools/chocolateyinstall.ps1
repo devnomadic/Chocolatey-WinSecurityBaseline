@@ -10,7 +10,7 @@ if($OSVersion.Major -lt 10 -or $OSVersion.Build -lt 20348){
   throw "Windows build must be Windows 11+ or Windows Server 2022+"
 }
 
-$SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%20Server%202022%20Security%20Baseline.zip' # download url, HTTPS preferred
+$SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/c/85c25433-a1b0-4ffa-9429-7e023e7da8d8/Windows%20Server%202022%20Security%20Baseline.zip' # download url, HTTPS preferred
 $LGPOUrl        = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip'
 
 $SecBaseLinePackageArgs = @{
