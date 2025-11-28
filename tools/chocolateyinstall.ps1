@@ -17,16 +17,16 @@ $SecBaseLinePackageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName"
   url           = $SecBaseLineUrl
-  checksum      = '3BDFB976546BE0EE4CE8B220A56E5A26C3ACBBB844DA00B6F9B2DD26D9CA0A04'
+  checksum      = '49590CC694626D171FC934FAFEA6494F13ECD3843086704B7A5B98355909B8E0'
   checksumType  = 'sha256'
   silentArgs    = ''
 }
 
 $LGPOPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools"
+  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Tools"
   url           = $LGPOUrl
-  checksum      = '6FFB6416366652993C992280E29FAEA3507B5B5AA661C33BA1AF31F48ACEA9C4'
+  checksum      = 'CB7159D134A0A1E7B1ED2ADA9A3CE8CE8F4DE391D14403D55438AF824247CC55'
   checksumType  = 'sha256'
   silentArgs    = ''
 }
@@ -35,10 +35,10 @@ Install-ChocolateyZipPackage @SecBaseLinePackageArgs
 Install-ChocolateyZipPackage @LGPOPackageArgs
 
 #If unzip does not place LPGO.exe in tools directory then move it
-if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\LGPO.exe")){
-    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\" -Filter '*LGPO.exe' -Recurse
+if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Tools\LGPO.exe")){
+    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\" -Filter '*LGPO.exe' -Recurse
     if ($gci){
-        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\$($gci.name)"
+        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Tools\$($gci.name)"
     }
     else{
         throw "Unable to find LGPO.exe"
@@ -57,13 +57,14 @@ else{
   $OSType = 'Server'
 } 
 
-$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\BaselineLocalInstall.ps1"
+$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Baseline-LocalInstall.ps1"
+cd "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\"
 
 if ($OSType -eq 'Server'){
-  & $ScriptInstallerPath -WS2022NonDomainJoined
+  & $ScriptInstallerPath -WSNonDomainJoined
 }
 elseif ($OSType -eq 'Workstation'){
-  & $ScriptInstallerPath -Win11NonDomainJoined
+  & $ScriptInstallerPath -Win10NonDomainJoined
 }
 else {
   Throw "Error selection powershell arguments"
