@@ -31,7 +31,7 @@ jobs:
           .\WinSecurityBaseline.Pester.ps1 -OutputFormat "JUnitXml"
 
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
+        uses: EnricoMi/publish-unit-test-result-action/windows@v2
         if: always()
         with:
           files: ${{ github.workspace }}/**/*.xml
