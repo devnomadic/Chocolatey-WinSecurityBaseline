@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>WinSecurityBaseline</id>
-    <version>20.1803</version>
+    <version>22.0.0</version>
     <packageSourceUrl>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline</packageSourceUrl>
     <owners>devnoadic</owners>
     <title>WinSecurityBaseline</title>
@@ -13,14 +13,14 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://www.microsoft.com/en-us/download/details.aspx?id=55319</projectSourceUrl>
     <docsUrl>https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines</docsUrl>
-    <releaseNotes>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline/pull/7</releaseNotes>
-    <tags>Windows Security Baseline 1809</tags>
+    <releaseNotes>https://github.com/devnomadic/Chocolatey-WinSecurityBaseline/releases</releaseNotes>
+    <tags>Windows Security Baseline 2022 Server</tags>
     <summary>A security baseline is a group of Microsoft-recommended configuration settings that explains their security impact. These settings are based on feedback from Microsoft security engineering teams, product groups, partners, and customers.</summary>
     <description>
 # Windows security baselines
 
 **Applies to**
--   Windows Server 2016+
+-   Windows Server 2022+
 -   Windows 10+
 
 ### Package Specific
@@ -31,12 +31,13 @@ The following package parameters can be set:
 
 #### Package Uninstallation
 
- * Package LGPO settings cannot be uninsalled programticall once installed. This need to be done manually!
+ * Package LGPO settings cannot be uninstalled programmatically once installed. This needs to be done manually!
 
 #### Package Versions
-|Windows Version|Choco Package Version|
-|Windows Server 2019 LTSC - 1803|20.1803|
-|Windows 10 LTSC - 1803|20.1803|
+Windows Server 2022 LTSC | 22.0.0
+Windows 10 21H2 | 22.0.0 
+Windows Server 2019 LTSC - 1803 | 20.1803
+Windows 10 LTSC - 1803 | 20.1803
 
 ## Using security baselines in your organization 
 

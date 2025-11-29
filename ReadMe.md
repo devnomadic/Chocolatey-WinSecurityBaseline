@@ -1,5 +1,8 @@
 ﻿## Build Status
-[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)
+|Appveyor Build|GitHub Build|
+|---|---|
+|[![Build status](https://ci.appveyor.com/api/projects/status/a30xsob1g3xp5jog?svg=true)](https://ci.appveyor.com/project/devnomadic/chocolatey-winsecuritybaseline) | [![actions workflow](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions/workflows/actions.yml/badge.svg)](https://github.com/devnomadic/chocolatey-winsecuritybaseline/actions)|
+|Win2019 Only|Win2022+|
 
 # Windows security baselines
 
@@ -11,8 +14,8 @@ C:\choco upgrade winsecuritybaseline
 ```
 
 **Applies to**
--   Windows Server 2016+
--   Windows 10
+-   Windows Server 2022+
+-   Windows 10+
 
 ### Package Specific
 #### Package Parameters
@@ -22,11 +25,13 @@ The following package parameters can be set:
 
 #### Package Uninstallation
 
- * Package LGPO settings cannot be uninsalled programticall once installed. This need to be done manually!
+ * Package LGPO settings cannot be uninstalled programmatically once installed. This needs to be done manually!
 
 #### Package Versions
 |Windows Version|Choco Package Version|
 |---|---|
+|Windows Server 2022 LTSC|22.0.0|
+|Windows 10 21H2|22.0.0|
 |Windows Server 2019 LTSC - 1803|20.1803|
 |Windows 10 LTSC - 1803|20.1803|
 

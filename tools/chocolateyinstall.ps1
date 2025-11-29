@@ -4,25 +4,27 @@ $arguments = Get-PackageParameters
 
 $OSVersion = [System.Environment]::OSVersion.Version
 
-if($OSVersion.Major -lt 10){
-  throw "Windows build must be Windows10+ or Server2016+"
+# Windows Server 2022 has build 20348, Windows 11 has build 22000+
+# This check excludes Windows 10 (builds < 20348) and Windows Server 2019 (build 17763)
+if($OSVersion.Major -lt 10 -or $OSVersion.Build -lt 20348){
+  throw "Windows build must be Windows 11+ or Windows Server 2022+"
 }
 
-$SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201809%20and%20Windows%20Server%202019%20Security%20Baseline.zip' # download url, HTTPS preferred
+$SecBaseLineUrl = 'https://download.microsoft.com/download/8/5/c/85c25433-a1b0-4ffa-9429-7e023e7da8d8/Windows%20Server%202022%20Security%20Baseline.zip' # download url, HTTPS preferred
 $LGPOUrl        = 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip'
 
 $SecBaseLinePackageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName"
   url           = $SecBaseLineUrl
-  checksum      = '575DDAF39EF364EA6DA678E22B0A988EA316EB240F73FBF618092A02647245BC'
+  checksum      = '49590CC694626D171FC934FAFEA6494F13ECD3843086704B7A5B98355909B8E0'
   checksumType  = 'sha256'
   silentArgs    = ''
 }
 
 $LGPOPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools"
+  unzipLocation = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Tools"
   url           = $LGPOUrl
   checksum      = 'CB7159D134A0A1E7B1ED2ADA9A3CE8CE8F4DE391D14403D55438AF824247CC55'
   checksumType  = 'sha256'
@@ -33,10 +35,10 @@ Install-ChocolateyZipPackage @SecBaseLinePackageArgs
 Install-ChocolateyZipPackage @LGPOPackageArgs
 
 #If unzip does not place LPGO.exe in tools directory then move it
-if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\LGPO.exe")){
-    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\" -Filter '*LGPO.exe' -Recurse
+if (!(Test-Path -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Tools\LGPO.exe")){
+    $gci = Get-ChildItem -Path "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\" -Filter '*LGPO.exe' -Recurse
     if ($gci){
-        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\Tools\$($gci.name)"
+        Move-Item -Path $gci[0].FullName -Destination "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Tools\$($gci.name)"
     }
     else{
         throw "Unable to find LGPO.exe"
@@ -55,10 +57,11 @@ else{
   $OSType = 'Server'
 } 
 
-$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Local_Script\BaselineLocalInstall.ps1"
+$ScriptInstallerPath = "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\Baseline-LocalInstall.ps1"
+cd "${env:ProgramFiles(x86)}\$env:ChocolateyPackageName\Windows Server-2022-Security-Baseline-FINAL\Scripts\"
 
 if ($OSType -eq 'Server'){
-  & $ScriptInstallerPath -WS2019NonDomainJoined
+  & $ScriptInstallerPath -WSNonDomainJoined
 }
 elseif ($OSType -eq 'Workstation'){
   & $ScriptInstallerPath -Win10NonDomainJoined
