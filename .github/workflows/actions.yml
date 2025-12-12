@@ -13,7 +13,7 @@ on:
 
 jobs:
   Build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v2
 
@@ -31,7 +31,7 @@ jobs:
           .\WinSecurityBaseline.Pester.ps1 -OutputFormat "JUnitXml"
 
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        uses: EnricoMi/publish-unit-test-result-action/windows@v2
         if: always()
         with:
           files: ${{ github.workspace }}/**/*.xml
